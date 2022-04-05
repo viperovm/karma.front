@@ -1,0 +1,20 @@
+.account_background {
+    background: linear-gradient(270deg, #0AD2CA -0.17%, #16F09B 122.83%);
+}
+
+.account_main {
+    width: 100%;
+    display: flex;
+}
+
+@media (min-width: 1140px) {
+    .account_main {
+        margin: 60px 0 80px 0;
+    }
+}
+
+@media (max-width: 1139.9px) {
+    .account_main {
+        margin: 30px 0 40px 0;
+    }
+}

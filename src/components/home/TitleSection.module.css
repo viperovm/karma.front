@@ -1,0 +1,111 @@
+.home_main_background {
+    width: 100%;
+    display: flex;
+    background-size: cover;
+    background-position: left top;
+    background-repeat: no-repeat;
+    z-index: 0;
+    position: relative;
+}
+
+@media (min-width: 1140px) {
+    .home_main_background {
+        margin-top: -172px;
+        padding-top: 172px;
+    }
+}
+
+@media (max-width: 1139.9px) {
+    .home_main_background {
+        margin-top: -116px;
+        padding-top: 116px;
+        min-height: 600px;
+    }
+}
+
+.home_main_background_gradient {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(269.78deg, #FFFFFF -1.27%, rgba(255, 255, 255, 0.72) 35.1%, rgba(255, 255, 255, 0) 65.24%, rgba(255, 255, 255, 0) 99.83%);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media (min-width: 1140px) {
+    .home_main_section {
+        max-width: 650px;
+        margin: 80px 0;
+    }
+
+    .home_main_section_text {
+        max-width: 400px;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 36px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 1139.9px) {
+    .home_main_section {
+        width: 100%;
+        margin: 80px 0 20px 0;
+    }
+
+    .home_main_section h2 {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    .home_main_section_telegram {
+        margin-bottom: 300px;
+    }
+
+    .home_main_section_text {
+        font-size: 15px;
+        line-height: 22px;
+    }
+}
+
+.home_main_section_text {
+    color: #333333;
+    position: relative;
+}
+
+.home_main_section_text img {
+    position: absolute;
+    bottom: -100px;
+    left: -67px;
+}
+
+.home_main_section_telegram {
+    margin-top: 25px;
+    display: flex;
+}
+
+.home_main_section_telegram img {
+    width: 47px;
+    margin-right: 15px;
+}
+
+.home_main_section_telegram_link a {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: #1C8ADB;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.home_main_section_telegram_link {
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 14px;
+    color: #333333;
+}

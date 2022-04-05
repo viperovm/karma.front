@@ -1,0 +1,25 @@
+.modal_background {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.modal_wrapper {
+    width: 685px;
+    height: 702px;
+    background: linear-gradient(90deg, #0AD2CA -0.17%, #16F09B 122.83%);
+    padding: 42px;
+}
+
+.modal_body {
+    background: #E8FBF9;
+    width: 100%;
+    height: 100%;
+}

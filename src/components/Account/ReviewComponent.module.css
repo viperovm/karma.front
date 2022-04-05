@@ -1,0 +1,326 @@
+.account_section_about_me_review_body {
+    border-radius: 15px;
+    position: relative;
+}
+
+
+.account_section_about_me_review_body:not(:last-child) {
+    margin-bottom: 50px;
+}
+
+.account_section_about_me_review_body:last-child {
+    margin-bottom: 0px!important;
+}
+
+.account_section_about_me_review_body img.avatar {
+    position: absolute;
+}
+
+.account_section_about_me_review_heading {
+    width: 100%;
+    display: flex;
+}
+
+.account_section_about_me_review_heading_name {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.account_section_about_me_review_heading_rating {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+.account_section_about_me_review_likes {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.account_section_about_me_review_likes img:first-child {
+    margin: -3px 10px 0 0;
+}
+
+.account_section_about_me_review_likes img:last-child {
+    margin: 0 0 -3px 10px;
+}
+
+.account_section_about_me_review_review {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.account_section_about_me_review_service {
+    font-weight: 500;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 7px;
+}
+
+.account_section_about_me_review_service span {
+    font-weight: 300;
+}
+
+.account_section_about_me_review_text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.account_section_about_me_review_buttons {
+    display: flex;
+}
+
+.account_section_about_me_review_buttons button{
+    height: 38px;
+    width: 137px;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 26px;
+    text-align: center;
+}
+
+.account_section_about_me_review_buttons_left {
+    display: flex;
+}
+
+.account_section_about_me_review_buttons_left div {
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.account_section_about_me_review_buttons_left img {
+    width: 9px;
+    margin-left: 4px;
+}
+
+.account_section_personal_heading button {
+    background-color: #16F09B;
+    box-shadow: 0px 0px 19.1553px rgba(0, 0, 0, 0.05);
+    border-radius: 7px;
+    border: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 47px;
+    color: #FFFFFF;
+}
+
+.account_section_about_me_response_body {
+    background: #E6F9F7;
+}
+
+.account_section_about_me_response_wrapper {
+    display: flex;
+}
+
+@media (min-width: 1140px) {
+    .account_section_about_me_response_wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1139.9px) {
+    .account_section_about_me_response_wrapper {
+        max-width: 240px;
+    }
+}
+
+.account_section_about_me_response_wrapper:not(:last-child) {
+    border-bottom: 1px solid #44EE95;
+}
+
+.account_section_about_me_response_wrapper>div {
+    display: flex;
+    align-items: center;
+}
+
+.account_section_about_me_response_avatar {
+    margin-right: 20px;
+}
+
+
+@media (max-width: 1139.9px) {
+    .account_section_about_me_response_avatar img {
+        width: 55px;
+    }
+}
+
+.account_section_about_me_response_data_name {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 13px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.account_section_about_me_response_data_email {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: #333333;
+    margin-bottom: 13px;
+}
+
+.account_section_about_me_response_data_text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+}
+
+.account_section_about_me_response_button_set {
+    display: flex;
+}
+
+.account_section_about_me_response_button_set button:first-child {
+    margin-bottom: 11px;
+}
+
+@media (min-width: 1140px) {
+    .account_section_about_me_review_body {
+        background: linear-gradient(-210deg, transparent 75px, #0AD2CA -0.17%, #16F09B 122.83%);
+    }
+    .account_section_about_me_review_body {
+        padding: 30px 30px 30px 50px;
+    }
+    .account_section_about_me_review_heading {
+        padding-left: 120px;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    .account_section_about_me_review_body img.avatar {
+        left: 20px;
+        top: -20px;
+    }
+    .account_section_about_me_review_heading_rating {
+        font-size: 20px;
+    }
+    .account_section_about_me_review_heading_rating img {
+        margin: 0 10px;
+    }
+    .account_section_about_me_review_buttons {
+        justify-content: space-between;
+    }
+    .account_section_about_me_review_buttons_left {
+        align-items: center;
+    }
+    .account_section_about_me_review_buttons_left button {
+        margin: 0 20px 0 0;
+    }
+    .account_section_about_me_review_likes {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin: 20px 0;
+    }
+    .account_section_about_me_response_body {
+        padding: 40px 50px 50px 100px;
+    }
+    .account_section_about_me_response_wrapper {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .account_section_about_me_response_button_set {
+        flex-direction: column;
+    }
+    .account_section_about_me_response_button_set button:first-child {
+        margin: 0 0 11px 0;
+    }
+}
+
+@media (max-width: 1139.9px) {
+    .account_section_about_me_review_body {
+        background: linear-gradient(-215deg, transparent 45px, #0AD2CA -0.17%, #16F09B 122.83%);
+    }
+    .account_section_about_me_review_body {
+        padding: 20px;
+    }
+    .account_section_about_me_review_heading {
+        padding-left: 65px;
+        justify-content: space-between;
+        flex-direction: column-reverse;
+    }
+    .account_section_about_me_review_body img.avatar {
+        width: 65px;
+        left: 0;
+        top: -10px;
+    }
+    .account_section_about_me_review_heading_rating {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .account_section_about_me_review_heading_rating img:first-child {
+        margin: 0 5px 0 0;
+        width: 78px;
+    }
+    .account_section_about_me_review_heading_rating img:last-child {
+        margin: 0 0 0 5px;
+        width: 10px;
+    }
+    .account_section_about_me_review_buttons {
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .account_section_about_me_review_buttons_left {
+        align-items: center;
+        flex-direction: column;
+    }
+    .account_section_about_me_review_buttons_left button {
+        margin: 20px 0;
+    }
+    .account_section_about_me_review_title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .account_section_about_me_review_likes {
+        margin: 20px 20px 20px 0;
+    }
+    .account_section_about_me_review_likes img {
+        height: 20px;
+    }
+    .account_section_about_me_response_body {
+        padding: 20px;
+    }
+    .account_section_about_me_response_wrapper {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .account_section_about_me_response_button_set {
+        flex-direction: row;
+        margin-top: 20px;
+    }
+    .account_section_about_me_response_button_set button:first-child {
+        margin: 0 5px 0 0;
+    }
+    .account_section_about_me_response_wrapper>div {
+        display: flex;
+        width: 100%;
+    }
+    .account_section_about_me_response_wrapper>div div:first-child,
+    .account_section_about_me_response_wrapper>div div:last-child(2) {
+        width: 50%;
+    }
+}

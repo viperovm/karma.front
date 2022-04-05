@@ -1,0 +1,99 @@
+
+.account_section_personal_editing {
+    font-weight: 300;
+    font-size: 14px;
+    color: #000000;
+    line-height: 55px;
+}
+
+.account_section_about_me_blocks {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 1140px) {
+    .account_section_about_me_blocks {
+        flex-direction: row;
+    }
+    .account_section_about_me_block:not(:last-child) {
+        margin: 0 20px 0 0;
+    }
+}
+
+@media (max-width: 1139.9px) {
+    .account_section_about_me_blocks {
+        flex-direction: column;
+    }
+    .account_section_about_me_block:not(:last-child) {
+        margin: 0 0 20px 0;
+    }
+}
+
+.account_section_about_me_block {
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.account_section_about_me_block_heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.account_section_about_me_block_title {
+    font-weight: 400;
+    font-size: 15px;
+    color: #333333;
+}
+
+.account_section_about_me_block_value {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 20px;
+    color: #333333;
+}
+
+.account_section_about_me_block_value img {
+    margin-right: 20px;
+}
+
+.account_section_about_me_reviews_buttons_block {
+    display: flex;
+}
+
+@media (min-width: 1140px) {
+    .account_section_about_me_reviews_buttons_block {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .account_section_about_me_reviews_buttons_block button:first-child {
+        margin: 0 20px 0 0;
+    }
+    .account_section_about_me_reviews_block {
+        margin: 20px 0;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 1139.9px) {
+    .account_section_about_me_reviews_buttons_block {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .account_section_about_me_reviews_buttons_block button:first-child {
+        margin: 0 0 15px 0;
+    }
+    .account_section_about_me_reviews_block {
+        margin: 20px -20px;
+        padding: 20px 0;
+    }
+}
