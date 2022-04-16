@@ -1,19 +1,23 @@
 import React, {useEffect, useState} from 'react';
+import {connect} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import styles from './MainLayout.module.css'
 import logo from '../../assets/images/logo-light.svg'
 import search from '../../assets/images/search.svg'
 import edit from '../../assets/images/edit.svg'
-import user from '../../assets/images/user.svg'
+import userAvatar from '../../assets/images/user.svg'
 import telegram from '../../assets/images/telegram.svg'
 import instagram from '../../assets/images/instagram.svg'
 import vk from '../../assets/images/vk.svg'
+import {logout} from "../../redux/actions/authActions";
 
-const MainLayout = ({children}) => {
+
+const MainLayout = ({children, logout, isAuthenticated, user}) => {
 
   const navigate = useNavigate()
 
   const [scroll, setScroll] = useState(0);
+  const [activeMenu, setActiveMenu] = useState(false);
 
   const handleScroll = () => {
     setScroll(window.scrollY);
@@ -23,6 +27,40 @@ const MainLayout = ({children}) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const AuthLinks = () => (
+    <>
+      <li>
+        <Link to={"/profile"}>
+          Моя страница
+        </Link>
+      </li>
+      <li>
+        <a className='nav-link' href='/' onClick={logout}>Выход</a>
+
+      </li>
+    </>
+  )
+
+  const GuestLinks = () => (
+    <>
+      <li>
+        <Link to={"/register"}>
+          Регистрация
+        </Link>
+      </li>
+      <li>
+        <Link to={"/login"}>
+          Вход
+        </Link>
+      </li>
+    </>
+  )
+
+  const handleAccountMenu = e => {
+    e.preventDefault()
+    setActiveMenu(true)
+  }
 
   return (
     <>
@@ -46,7 +84,14 @@ const MainLayout = ({children}) => {
             <ul>
               <li className={styles.nav_el}><Link to="/search"><img src={search} alt="search"/></Link></li>
               <li className={styles.nav_el}><Link to="/reviews"><img src={edit} alt="review"/></Link></li>
-              <li className={styles.nav_el}><Link to="/account"><img src={user} alt="account"/></Link></li>
+              <li className={styles.nav_el}>
+                <div onClick={handleAccountMenu}>
+                  <img src={userAvatar} alt="account"/>
+                  {activeMenu && <div className={styles.account_menu} onMouseLeave={() => setActiveMenu(false)}>
+                    <ul>{isAuthenticated ? <AuthLinks/> : <GuestLinks/>}</ul>
+                  </div>}
+                </div>
+              </li>
             </ul>
           </nav>
         </div>
@@ -124,4 +169,9 @@ const MainLayout = ({children}) => {
   );
 }
 
-export default MainLayout;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
+})
+
+export default connect(mapStateToProps, {logout})(MainLayout)

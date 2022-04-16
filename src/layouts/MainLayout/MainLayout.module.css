@@ -208,6 +208,38 @@
 
 .header_nav li{
     display: inline-block;
+    position: relative;
+}
+
+.nav_el>div>img {
+    cursor: pointer;
+}
+
+.account_menu {
+    position: absolute;
+    padding: 20px;
+    background: #E8FBF9;
+    border-radius: 5px;
+    width: 176px;
+    box-shadow: 20px 20px 40px rgb(0 0 0 / 8%);
+    top: 50px;
+    right: 0;
+}
+
+.account_menu a {
+    transition: all .3s ease-in-out;
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
+}
+
+.account_menu a:hover {
+    transition: all .3s ease-in-out;
+    color: #44EE95;
+}
+
+.account_menu li:not(:last-child){
+    margin-bottom: 10px;
 }
 
 .footer {

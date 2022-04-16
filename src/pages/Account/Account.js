@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styles from './Account.module.css';
+import {connect} from 'react-redux'
 import edit_icon from '../../assets/images/edit-small-grey.svg'
 import arrow_up from '../../assets/images/arrow-up.svg'
 import arrow_down from '../../assets/images/arrow-down.svg'
@@ -12,14 +13,21 @@ import AccountLayout from "../../layouts/AccountLayout/AccountLayout";
 import AsideLayout from "../../layouts/AsideLayout";
 import Heading from "../../components/Heading";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import {Navigate, useNavigate} from "react-router-dom";
+import {login} from "../../redux/actions/authActions";
+import Rating from "../../components/Account/Rating";
 
-const Account = () => {
+const Account = ({isAuthenticated, user}) => {
+
+  const navigate = useNavigate()
 
   const {width} = useWindowDimensions()
 
   const [mobile, setMobile] = useState(false)
 
   const [edit, setEdit] = useState(false)
+  const [rating, setRating] = useState(false)
+  const [status, setStatus] = useState('executor')
 
   const toggleEdit = () => {
     setEdit(!edit)
@@ -37,13 +45,20 @@ const Account = () => {
     window.scrollTo(0, 0)
   }, [])
 
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login')
+    }
+  }, [isAuthenticated, navigate])
+
+
   return (
     <>
       <AccountLayout page_name={'МОЯ СТРАНИЦА'}>
         <>
-          {!mobile && <AsideLayout name={'Воронцов Дмитрий'} username={'@Dmitriy32'}/>}
+          {!mobile && <AsideLayout name={user && user.full_name} username={user && user.name}/>}
           <section className='account-section'>
-            {mobile && <AsideLayout name={'Воронцов Дмитрий'} username={'@Dmitriy32'}>
+            {mobile && <AsideLayout name={user && user.full_name} username={user && user.name}>
               <Heading text={'Личная информация'} padding={'0'}>
                 <div className={styles.account_section_personal_editing} onClick={toggleEdit} style={{cursor: 'pointer'}}>
                   <img src={edit_icon} alt="edit"/>
@@ -105,8 +120,8 @@ const Account = () => {
 
                 </div>
                 <div className={styles.account_section_about_me_reviews_block}>
-                  {reviews_data.map(item => (
-                    <ReviewComponent data={item} mobile={mobile}/>
+                  {reviews_data.map((item, index) => (
+                    <ReviewComponent key={index} data={item} mobile={mobile}/>
                   ))}
                 </div>
               </div>
@@ -124,27 +139,27 @@ const Account = () => {
               <Heading text={'Общая информация по отзывам'}/>
 
               <div className={styles.account_section_about_me_blocks}>
-                <div className={styles.account_section_about_me_block}>
+                <div className={styles.account_section_about_me_block} onClick={() => setStatus('executor')}>
                   <div className={styles.account_section_about_me_block_heading}>
                     <div className={styles.account_section_about_me_block_title}>
                       Я исполнитель
                     </div>
-                    <img src={arrow_up} alt="arrow_up"/>
+                    {status === 'executor' ? <img src={arrow_down} alt="arrow_down"/> : <img src={arrow_up} alt="arrow_up"/>}
                   </div>
                   <div className={styles.account_section_about_me_block_value}>
-                    1
+                    {user && user.reviews_customers_about_me_count}
                   </div>
                 </div>
 
-                <div className={styles.account_section_about_me_block}>
+                <div className={styles.account_section_about_me_block} onClick={() => setStatus('customer')}>
                   <div className={styles.account_section_about_me_block_heading}>
                     <div className={styles.account_section_about_me_block_title}>
                       Я клиент
                     </div>
-                    <img src={arrow_down} alt="arrow_down"/>
+                    {status === 'customer' ? <img src={arrow_down} alt="arrow_down"/> : <img src={arrow_up} alt="arrow_up"/>}
                   </div>
                   <div className={styles.account_section_about_me_block_value}>
-                    0
+                    {user && user.reviews_executors_about_me_count}
                   </div>
                 </div>
 
@@ -153,11 +168,12 @@ const Account = () => {
                     <div className={styles.account_section_about_me_block_title}>
                       Мой рейтинг
                     </div>
-                    <img src={arrow_down} alt="arrow_down"/>
+                    {rating ? <img src={arrow_up} alt="arrow_up"/> : <img src={arrow_down} alt="arrow_down"/>}
                   </div>
 
                   <div className={styles.account_section_about_me_block_value}>
-                    <img src={stars} alt="stars"/> 4.0
+                    <Rating ratingValue={status === 'executor' ? user && user.executor_rating : user && user.customer_rating}/>
+                    {status === 'executor' ? user && user.executor_rating : user && user.customer_rating}
                   </div>
                 </div>
               </div>
@@ -173,8 +189,8 @@ const Account = () => {
 
                 </div>
                 <div className={styles.account_section_about_me_reviews_block}>
-                  {reviews_data.map(item => (
-                    <ReviewComponent data={item}/>
+                  {reviews_data.map((item, index) => (
+                    <ReviewComponent key={index} data={item}/>
                   ))}
                 </div>
               </div>
@@ -186,4 +202,14 @@ const Account = () => {
   );
 };
 
-export default Account;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
+})
+
+
+const mapDispatchToProps = {
+  login,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account)

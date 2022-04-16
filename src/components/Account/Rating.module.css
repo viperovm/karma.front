@@ -1,0 +1,11 @@
+.rating_specifications_rating {
+    color: #16F09B;
+}
+
+.rating_specifications_rating i:not(:last-child) {
+    margin-right: 5px;
+}
+
+.rating_specifications_rating i:last-child {
+    margin-right: 15px;
+}

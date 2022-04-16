@@ -1,0 +1,7 @@
+.entry_form input:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.entry_form input:last-child {
+    margin-bottom: 30px;
+}

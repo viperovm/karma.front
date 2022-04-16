@@ -4,10 +4,28 @@
     justify-content: space-between;
 }
 
+.account_section_personal_heading.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .account_section_personal_title {
     font-weight: 400;
     color: #333333;
     margin-bottom: 15px;
+}
+
+.account_section_personal_heading a {
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+    color: #000000;
+}
+
+.account_section_personal_heading a:hover {
+    transition: all .3s ease-in-out;
+    color: #44EE95;
 }
 
 @media (min-width: 1140px) {
