@@ -1,13 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Review.module.css';
+import {connect} from 'react-redux'
+import {useNavigate} from "react-router-dom";
 import AsideLayout from "../../layouts/AsideLayout";
 import Heading from "../../components/Heading";
 import AccountLayout from "../../layouts/AccountLayout/AccountLayout";
 import SearchComponent from "../../components/SearchComponent/SearchComponent";
 import Modal from "../../components/Account/Modal";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import {login} from "../../redux/actions/authActions";
 
-const Review = () => {
+const Review = ({isAuthenticated, user}) => {
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login')
+    }
+  }, [isAuthenticated, navigate])
 
   const {width} = useWindowDimensions()
 
@@ -25,7 +36,7 @@ const Review = () => {
     <>
       <AccountLayout page_name={'добавить отзыв'}>
         <>
-          {!mobile && <AsideLayout name={'Воронцов Дмитрий'} username={'@Dmitriy32'} />}
+          {!mobile && <AsideLayout name={user?.full_name} username={user?.name} page_name={'ДОБАВИТЬ ОТЗЫВ'}/>}
           <section className='account-section'>
             {mobile ? (
               <>
@@ -126,4 +137,12 @@ const Review = () => {
   );
 };
 
-export default Review;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
+})
+
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Review);

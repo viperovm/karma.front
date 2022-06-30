@@ -16,6 +16,8 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {Navigate, useNavigate} from "react-router-dom";
 import {login} from "../../redux/actions/authActions";
 import Rating from "../../components/Account/Rating";
+import success from '../../assets/images/success.svg'
+import fail from '../../assets/images/fail.svg'
 
 const Account = ({isAuthenticated, user}) => {
 
@@ -34,7 +36,7 @@ const Account = ({isAuthenticated, user}) => {
   }
 
   useEffect(() => {
-    if(width<1140) {
+    if (width < 1140) {
       setMobile(true)
     } else {
       setMobile(false)
@@ -56,13 +58,30 @@ const Account = ({isAuthenticated, user}) => {
     <>
       <AccountLayout page_name={'МОЯ СТРАНИЦА'}>
         <>
-          {!mobile && <AsideLayout name={user && user.full_name} username={user && user.name}/>}
+          {!mobile && <AsideLayout name={user?.full_name} username={user?.name} page_name={'МОЯ СТРАНИЦА'}/>}
           <section className='account-section'>
-            {mobile && <AsideLayout name={user && user.full_name} username={user && user.name}>
+            {mobile && <AsideLayout name={user?.full_name} username={user?.name}>
               <Heading text={'Личная информация'} padding={'0'}>
-                <div className={styles.account_section_personal_editing} onClick={toggleEdit} style={{cursor: 'pointer'}}>
+                {/*<div className={styles.account_section_personal_editing} onClick={toggleEdit}*/}
+                {/*     style={{cursor: 'pointer'}}>*/}
+                {/*  <img src={edit_icon} alt="edit"/>*/}
+                {/*</div>*/}
+                {!edit && <div className={styles.account_section_personal_editing} onClick={toggleEdit}
+                               style={{cursor: 'pointer'}}>
                   <img src={edit_icon} alt="edit"/>
-                </div>
+                </div>}
+                {edit &&
+                  <div className={styles.account_section_personal_editing_wrapper}>
+                    <div className={styles.account_section_personal_editing} onClick={toggleEdit}
+                         style={{cursor: 'pointer'}}>
+                      <img src={success} alt="edit"/>
+                    </div>
+                    <div className={styles.account_section_personal_editing} onClick={toggleEdit}
+                         style={{cursor: 'pointer'}}>
+                      <img src={fail} alt="edit"/>
+                    </div>
+                  </div>
+                }
               </Heading>
               <PersonalInfo editing={edit}/>
               <Heading text={'Аккаунты'} padding={'0'}/>
@@ -126,11 +145,24 @@ const Account = ({isAuthenticated, user}) => {
                 </div>
               </div>
             </AsideLayout>}
-            {!mobile &&  (<>
+            {!mobile && (<>
               <Heading text={'Личная информация'}>
-                <div className={styles.account_section_personal_editing} onClick={toggleEdit} style={{cursor: 'pointer'}}>
+                {!edit && <div className={styles.account_section_personal_editing} onClick={toggleEdit}
+                               style={{cursor: 'pointer'}}>
                   <img src={edit_icon} alt="edit"/> Редактировать
-                </div>
+                </div>}
+                {edit &&
+                  <div className={styles.account_section_personal_editing_wrapper}>
+                    <div className={styles.account_section_personal_editing} onClick={toggleEdit}
+                         style={{cursor: 'pointer'}}>
+                      <img src={success} alt="edit"/> Сохранить
+                    </div>
+                    <div className={styles.account_section_personal_editing} onClick={toggleEdit}
+                         style={{cursor: 'pointer'}}>
+                      <img src={fail} alt="edit"/> Отменить
+                    </div>
+                  </div>
+                }
               </Heading>
               <PersonalInfo editing={edit}/>
               <Heading text={'Аккаунты'}/>
@@ -144,7 +176,8 @@ const Account = ({isAuthenticated, user}) => {
                     <div className={styles.account_section_about_me_block_title}>
                       Я исполнитель
                     </div>
-                    {status === 'executor' ? <img src={arrow_down} alt="arrow_down"/> : <img src={arrow_up} alt="arrow_up"/>}
+                    {status === 'executor' ? <img src={arrow_down} alt="arrow_down"/> :
+                      <img src={arrow_up} alt="arrow_up"/>}
                   </div>
                   <div className={styles.account_section_about_me_block_value}>
                     {user && user.reviews_customers_about_me_count}
@@ -156,7 +189,8 @@ const Account = ({isAuthenticated, user}) => {
                     <div className={styles.account_section_about_me_block_title}>
                       Я клиент
                     </div>
-                    {status === 'customer' ? <img src={arrow_down} alt="arrow_down"/> : <img src={arrow_up} alt="arrow_up"/>}
+                    {status === 'customer' ? <img src={arrow_down} alt="arrow_down"/> :
+                      <img src={arrow_up} alt="arrow_up"/>}
                   </div>
                   <div className={styles.account_section_about_me_block_value}>
                     {user && user.reviews_executors_about_me_count}
@@ -172,7 +206,8 @@ const Account = ({isAuthenticated, user}) => {
                   </div>
 
                   <div className={styles.account_section_about_me_block_value}>
-                    <Rating ratingValue={status === 'executor' ? user && user.executor_rating : user && user.customer_rating}/>
+                    <Rating
+                      ratingValue={status === 'executor' ? user && user.executor_rating : user && user.customer_rating}/>
                     {status === 'executor' ? user && user.executor_rating : user && user.customer_rating}
                   </div>
                 </div>

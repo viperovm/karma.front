@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Search.module.css';
+import {connect} from 'react-redux'
+import {useNavigate} from "react-router-dom";
 import arrow_up from '../../assets/images/arrow-up.svg'
 import arrow_down from '../../assets/images/arrow-down.svg'
 import stars from '../../assets/images/stars.svg'
@@ -14,7 +16,15 @@ import edit_icon from "../../assets/images/edit-small-grey.svg";
 import PersonalInfo from "../../components/Account";
 import AccountsSection from "../../components/Account/AccountsSection";
 
-const Search = () => {
+const Search = ({isAuthenticated, user}) => {
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login')
+    }
+  }, [isAuthenticated, navigate])
 
   const {width} = useWindowDimensions()
 
@@ -35,9 +45,9 @@ const Search = () => {
 
   return (
     <>
-      <AccountLayout page_name={'Поиск'}>
+      <AccountLayout page_name={'ПОИСК ОТЗЫВОВ'}>
         <>
-          {!mobile && <AsideLayout name={'Воронцов Дмитрий'} username={'@Dmitriy32'} />}
+          {!mobile && <AsideLayout name={user?.full_name} username={user?.name} page_name={'ПОИСК ОТЗЫВОВ'}/>}
           <section className='account-section'>
             {mobile && (
               <>
@@ -175,4 +185,12 @@ const Search = () => {
   );
 };
 
-export default Search;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
+})
+
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

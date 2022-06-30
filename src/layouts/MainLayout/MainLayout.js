@@ -31,7 +31,7 @@ const MainLayout = ({children, logout, isAuthenticated, user}) => {
   const AuthLinks = () => (
     <>
       <li>
-        <Link to={"/profile"}>
+        <Link to={"/account"}>
           Моя страница
         </Link>
       </li>

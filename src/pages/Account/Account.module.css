@@ -1,9 +1,24 @@
+.account_section_personal_editing_wrapper {
+    display: flex;
+}
 
 .account_section_personal_editing {
     font-weight: 300;
     font-size: 14px;
     color: #000000;
     line-height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+.account_section_personal_editing:not(:last-child) {
+    margin-right: 30px;
+}
+
+.account_section_personal_editing img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }
 
 .account_section_about_me_blocks {

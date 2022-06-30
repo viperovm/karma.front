@@ -12,15 +12,20 @@
     margin-bottom: 20px;
 }
 
+.row_title {
+    flex: none;
+}
+
+.row_value {
+    width: 100%;
+}
 
 @media (min-width: 1140px) {
     .row_title {
         width: 170px;
         margin-top: 10px;
     }
-    .row_value {
-        width: 200px;
-    }
+
     .row_value.full {
         flex: 2;
     }
@@ -32,9 +37,7 @@
         font-size: 13px;
         margin-top: 12px;
     }
-    .row_value {
-        width: 130px;
-    }
+
     .row_value * {
         font-size: 13px;
     }

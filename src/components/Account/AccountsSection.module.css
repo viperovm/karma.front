@@ -13,8 +13,13 @@
 }
 
 .row_title {
+    flex: none;
     width: 170px;
     margin-top: 10px;
+}
+
+.row_value {
+    width: 100%;
 }
 
 .row_icon {
@@ -25,9 +30,7 @@
     .row_title {
         width: 170px;
     }
-    .row_value {
-        width: 200px;
-    }
+
     .row_value.full {
         flex: 2;
     }
@@ -42,7 +45,6 @@
         font-size: 13px;
     }
     .row_value {
-        width: 130px;
         font-size: 13px;
     }
     .row_icon {

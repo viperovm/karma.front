@@ -92,6 +92,10 @@
     justify-content: center;
 }
 
+.account_aside_menu ul li.active {
+    background: linear-gradient(90deg, #0AD2CA -0.17%, #16F09B 122.83%);
+}
+
 .account_aside_menu ul li img {
     position: absolute;
     height: 20px;
@@ -108,7 +112,14 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+}
 
+.account_aside_menu ul li.active a {
+    background: #FFFFFF;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
 }
 
 .account_aside_menu ul li:not(:last-child) {
