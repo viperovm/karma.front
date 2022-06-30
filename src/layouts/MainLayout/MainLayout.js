@@ -36,7 +36,14 @@ const MainLayout = ({children, logout, isAuthenticated, user}) => {
         </Link>
       </li>
       <li>
-        <a className='nav-link' href='/' onClick={logout}>Выход</a>
+        <Link
+          className='nav-link'
+          to={"/"}
+          onClick={logout}
+        >
+          Выход
+        </Link>
+        {/*<a className='nav-link' href='/' onClick={logout}>Выход</a>*/}
 
       </li>
     </>

@@ -35,6 +35,27 @@
     justify-content: center;
 }
 
+.account_aside_avatar_border {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #0AD2CA, #16F09B);
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account_aside_avatar_inner {
+    width: 212px;
+    height: 212px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #ffffff;
+}
+
+
 .account_aside_avatar img {
     margin: 0 auto;
 }
