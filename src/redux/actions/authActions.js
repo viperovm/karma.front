@@ -447,7 +447,6 @@ export const update_user = ({name, full_name, city, birthday, avatar, about}) =>
       }
     };
 
-    console.log(avatar)
 
     const content = JSON.stringify({name, full_name, city, birthday, avatar, about});
 
@@ -468,6 +467,38 @@ export const update_user = ({name, full_name, city, birthday, avatar, about}) =>
       });
     }
   } else {
+    dispatch({
+      type: USER_UPDATE_FAIL
+    });
+  }
+};
+
+
+export const update_user_avatar = (id, avatar) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `JWT ${localStorage.getItem('access')}`,
+    },
+  }
+
+  let form_data = new FormData()
+
+  form_data.append('avatar', avatar, avatar.name)
+
+
+  try {
+    const res = await axios.patch(
+      `${process.env.REACT_APP_API_URL}/auth/users/${id}/avatar/`,
+      form_data,
+      config
+    )
+
+    dispatch({
+      type: USER_UPDATE_SUCCESS,
+      payload: res.data
+    });
+  } catch (err) {
     dispatch({
       type: USER_UPDATE_FAIL
     });
